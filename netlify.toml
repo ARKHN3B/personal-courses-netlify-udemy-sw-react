@@ -5,7 +5,7 @@
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [build.environment]
     TEST_KEY_FROM_NETLIFY_TOML_ENV = "development"
-    BIG_ENV = "HELLO_FROM_PROD"
+    REACT_APP_BIG_ENV = "HELLO_FROM_PROD"
 
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [context.production.environment]
