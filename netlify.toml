@@ -22,4 +22,4 @@
     REACT_APP_MY_KEY="NEW DEV ENV"
 
 [[plugins]]
-    package = "./netlify/plugins/text-env"
+    package = "netlify/plugins/test-env.js"
