@@ -1,5 +1,8 @@
 module.exports = {
-  onPreBuild: () => {
-    console.debug(process.env)
+  onPreBuild: (...args) => {
+    console.debug({
+      args,
+      env: process.env
+    })
   }
 }
