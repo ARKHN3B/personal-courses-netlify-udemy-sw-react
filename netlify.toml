@@ -1,14 +1,5 @@
 [build]
     publish = "build"
 
-[build.environment]
-    TEST_KEY_FROM_NETLIFY_TOML_ENV = "development"
-    BIG_ENV = "HELLO_FROM_PROD"
-
-[context.production.environment]
-    TEST_ENV_ONLY_PROD = "Hello World!"
-    BIG_ENV = "HELLO_FROM_PROD"
-
 [context.branch-deploy.environment]
-    TEST_ENV_DEPLOY_BRANCH = "Hello deploy!"
-    BIG_ENV = "HELLO_FROM_DEPLOY_BRANCH"
+    BIG_ENV = "TEEEEEEEEST"
