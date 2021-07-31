@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React - {process.env.MYKEY}
+          Learn React - {process.env.REACT_APP_MY_KEY}
         </a>
       </header>
     </div>
