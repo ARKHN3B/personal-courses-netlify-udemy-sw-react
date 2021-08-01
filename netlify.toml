@@ -1,25 +1,28 @@
 [build]
-    publish = "build"
-    functions = "functions"
+publish = "build"
+functions = "functions"
 
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [build.environment]
-    TEST_KEY_FROM_NETLIFY_TOML_ENV = "development"
-    BIG_ENV = "HELLO_FROM_PROD"
+TEST_KEY_FROM_NETLIFY_TOML_ENV = "development"
+BIG_ENV = "HELLO_FROM_PROD"
 
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [context.production.environment]
-    TEST_ENV_ONLY_PROD = "Hello World!"
-    BIG_ENV = "HELLO_FROM_PROD"
+TEST_ENV_ONLY_PROD = "Hello World!"
+BIG_ENV = "HELLO_FROM_PROD"
 
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [context.branch-deploy.environment]
-    TEST_ENV_DEPLOY_BRANCH = "Hello deploy!"
-    BIG_ENV = "HELLO_FROM_DEPLOY_BRANCH"
+TEST_ENV_DEPLOY_BRANCH = "Hello deploy!"
+BIG_ENV = "HELLO_FROM_DEPLOY_BRANCH"
 
 [dev.environment]
-    REACT_APP_BIG_ENV = "HELLO_FROM_PROD"
-    REACT_APP_MY_KEY="NEW DEV ENV"
+REACT_APP_BIG_ENV = "HELLO_FROM_PROD"
+REACT_APP_MY_KEY="NEW DEV ENV"
 
 [[plugins]]
-    package = "./netlify/plugins/netlify-plugin-uefn"
+package = "./netlify/plugins/netlify-plugin-uefn"
+    [plugins.inputs]
+    prefix = "REACT_APP"
+    def = "TEST, TEST_2"
