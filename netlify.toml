@@ -25,4 +25,4 @@ REACT_APP_MY_KEY="NEW DEV ENV"
 package = "./netlify/plugins/netlify-plugin-uefn"
     [plugins.inputs]
     prefix = "REACT_APP"
-    def = "TEST, TEST_2"
+    def = ["TEST", "TEST_2"]
