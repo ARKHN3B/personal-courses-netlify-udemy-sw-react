@@ -2,7 +2,9 @@ module.exports = {
   onPreBuild: ({ inputs }) => {
     const {prefix, def} = inputs;
 
-    if (!def && !def.length) return;
+    if (!def && !def.length) {
+      throw Error("No def");
+    }
 
     const definitions = Array.isArray(def) ? def : def.split(/\s*[;|,|\s]\s*/);
 
