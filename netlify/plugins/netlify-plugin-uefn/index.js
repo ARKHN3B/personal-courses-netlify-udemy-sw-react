@@ -6,7 +6,12 @@ module.exports = {
 
     const definitions = Array.isArray(def) ? def : def.split(/\s*[;|,|\s]\s*/);
 
+    for (const definition of definitions) {
+      const key = prefix ? `${prefix}_${definition}` : definition;
+      const value = process.env[definition];
+      process.env[key] = value;
+    }
+
     console.debug({ inputs, definitions, env: process.env });
-    process.env["REACT_APP_RHINOSHIELD"] = "Les meilleurs coques!";
   }
 }
