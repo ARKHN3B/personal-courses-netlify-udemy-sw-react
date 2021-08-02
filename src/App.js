@@ -10,6 +10,17 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <form name="contact" netlify>
+          <p>
+            <label>Name <input type="text" name="name" /></label>
+          </p>
+          <p>
+            <label>Email <input type="email" name="email" /></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -24,7 +35,6 @@ function App() {
             <li>(((Test env from netlify TOML file only for deploy branch))): ===> {process.env.REACT_APP_TEST_ENV_DEPLOY_BRANCH}</li>
             <li>(((Test env from netlify TOML file for ALL (overrides)))): ===> {process.env.REACT_APP_BIG_ENV}</li>
           </ol>
-
         </a>
       </header>
     </div>
