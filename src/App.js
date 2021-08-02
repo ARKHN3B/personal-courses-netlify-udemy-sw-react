@@ -10,7 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <form name="contact" netlify>
+        <form name="contact" data-netlify={true}>
           <p>
             <label>Name <input type="text" name="name" /></label>
           </p>
