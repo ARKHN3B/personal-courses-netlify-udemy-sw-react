@@ -1,12 +1,15 @@
 module.exports = {
   onPreBuild: ({inputs, utils}) => {
     try {
-      console.info("Starting the \"uefn\" plugin process ")
+      console.info("Starting the \"uefn\" plugin process ");
       const prefix = inputs.prefix || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_PREFIX;
 
+      // Stop the process if there is no prefix input without breaking the build
       if (!prefix) {
         return utils.status.show({summary: "No variables defined in the \"prefix\" input. Skip the process."});
       }
+
+      console.info(`Defined prefix: "${prefix}"`);
 
       const hasDef = inputs.def || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF;
 
@@ -18,15 +21,17 @@ module.exports = {
       // Build definitions
       const definitions = buildGlobalDefinitions(inputs.def);
 
+      console.info("Built-in definitions: ", definitions);
+
       // Set the process env object
       for (const definition of definitions) {
         // Use old concat to provide a support to old Node versions
         const key        = `${prefix}_${definition}`;
         process.env[key] = process.env[definition];
+        console.info(`Set ${key} with the following value: "${definition}" in process.env`);
       }
 
-      console.debug(process.env);
-
+      console.info("uefn plugin process completed");
       utils.status.show({summary: "The environment variables have been added successfully!"});
     }
     catch (error) {
