@@ -23,6 +23,7 @@ module.exports = {
 
       console.info("Built-in definitions: ", definitions);
 
+      console.group("Definition process");
       // Set the process env object
       for (const definition of definitions) {
         // Use old concat to provide a support to old Node versions
@@ -30,6 +31,7 @@ module.exports = {
         process.env[key] = process.env[definition];
         console.info(`Set ${key} with the following value: "${definition}" in process.env`);
       }
+      console.groupEnd();
 
       console.info("uefn plugin process completed");
       console.groupEnd();
@@ -48,11 +50,13 @@ module.exports = {
  * @return {*[]}
  */
 function buildGlobalDefinitions(tomlDef) {
-  console.info("Set global definitions (merge UI definitions with TOML definitions if exists)");
+  console.group("Set global definitions (merge UI definitions with TOML definitions if exists)");
   // Get definitions sets in the Netlify UI
   const uiDef         = parseUIDefinitions();
+  console.info("Parse TOML definitions if exists");
   const parsedTomlDef = Array.isArray(tomlDef) ? tomlDef : splitDefinitions(tomlDef);
 
+  console.groupEnd();
   // Important! The definitions sets in the TOML file override those sets in the Netlify UI
   return [...uiDef, ...parsedTomlDef];
 }
@@ -63,7 +67,7 @@ function buildGlobalDefinitions(tomlDef) {
  * @return {*[]}
  */
 function parseUIDefinitions() {
-  console.group("Parse UI definitions if exists");
+  console.info("Parse UI definitions if exists");
   const {NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF: uiDef} = process.env;
 
   if (!uiDef) {
@@ -74,7 +78,6 @@ function parseUIDefinitions() {
   // If the string is an array
   const isArrayLike = /\[/.test(uiDef);
 
-  console.groupEnd();
   return isArrayLike ? JSON.parse(uiDef) : splitDefinitions(uiDef);
 }
 
