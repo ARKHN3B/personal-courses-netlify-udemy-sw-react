@@ -23,7 +23,4 @@ REACT_APP_BIG_ENV = "HELLO_FROM_PROD"
 REACT_APP_MY_KEY="NEW DEV ENV"
 
 [[plugins]]
-package = "netlify-plugin-use-env-in-runtime"
-    [plugins.inputs]
-    prefix = "REACT_APP"
-    def = ["MY_KEY", "BIG_ENV", "TEST_KEY_FROM_NETLIFY_TOML_ENV"]
+package = "./netlify/plugins/netlify-plugin-uefn"
