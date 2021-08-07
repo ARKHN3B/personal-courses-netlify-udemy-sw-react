@@ -29,7 +29,7 @@ module.exports = {
         // Use old concat to provide a support to old Node versions
         const key        = `${prefix}_${definition}`;
         process.env[key] = process.env[definition];
-        console.info(`Set ${key} with the following value: "${definition}" in process.env`);
+        console.info(`- Set ${key} with the following value: "${definition}" in process.env`);
       }
       console.groupEnd();
 
@@ -53,7 +53,7 @@ function buildGlobalDefinitions(tomlDef) {
   console.group("Set global definitions (merge UI definitions with TOML definitions if exists)");
   // Get definitions sets in the Netlify UI
   const uiDef         = parseUIDefinitions();
-  console.info("Parse TOML definitions if exists");
+  console.info("- Parse TOML definitions if exists");
   const parsedTomlDef = Array.isArray(tomlDef) ? tomlDef : splitDefinitions(tomlDef);
 
   console.groupEnd();
@@ -67,7 +67,7 @@ function buildGlobalDefinitions(tomlDef) {
  * @return {*[]}
  */
 function parseUIDefinitions() {
-  console.info("Parse UI definitions if exists");
+  console.info("- Parse UI definitions if exists");
   const {NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF: uiDef} = process.env;
 
   if (!uiDef) {
