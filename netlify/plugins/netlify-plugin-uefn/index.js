@@ -1,7 +1,7 @@
 module.exports = {
   onPreBuild: ({inputs, utils}) => {
     try {
-      console.info("Starting the \"uefn\" plugin process ");
+      console.group("Starting the \"uefn\" plugin process");
       const prefix = inputs.prefix || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_PREFIX;
 
       // Stop the process if there is no prefix input without breaking the build
@@ -32,6 +32,7 @@ module.exports = {
       }
 
       console.info("uefn plugin process completed");
+      console.groupEnd();
       utils.status.show({summary: "The environment variables have been added successfully!"});
     }
     catch (error) {
@@ -62,7 +63,7 @@ function buildGlobalDefinitions(tomlDef) {
  * @return {*[]}
  */
 function parseUIDefinitions() {
-  console.info("Parse UI definitions if exists");
+  console.group("Parse UI definitions if exists");
   const {NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF: uiDef} = process.env;
 
   if (!uiDef) {
@@ -73,6 +74,7 @@ function parseUIDefinitions() {
   // If the string is an array
   const isArrayLike = /\[/.test(uiDef);
 
+  console.groupEnd();
   return isArrayLike ? JSON.parse(uiDef) : splitDefinitions(uiDef);
 }
 
