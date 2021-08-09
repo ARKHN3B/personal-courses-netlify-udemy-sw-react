@@ -6,24 +6,22 @@ module.exports = {
 
       // Stop the process if there is no prefix input without breaking the build
       if (!prefix) {
-        return utils.status.show({summary: "No variables defined in the \"prefix\" input. Skip the process."});
+        return console.warn("No variables defined in the \"prefix\" input. Skip the process.");
       }
 
       console.info(`Defined prefix: "${prefix}"`);
 
-      const hasDef = inputs.def || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF;
-
       // Stop the process if there is no def input without breaking the build
+      const hasDef = inputs.def || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF;
       if (!hasDef) {
-        return utils.status.show({summary: "No variables defined in the \"def\" input. Skip the process."});
+        return console.warn("No variables defined in the \"def\" input. Skip the process.");
       }
 
       // Build definitions
       const definitions = buildGlobalDefinitions(inputs.def);
-
       console.info("Built-in definitions: ", definitions);
 
-      console.group("Definition process");
+      console.group("Definition proces");
       // Set the process env object
       for (const definition of definitions) {
         // Use old concat to provide a support to old Node versions
@@ -33,9 +31,9 @@ module.exports = {
       }
       console.groupEnd();
 
-      console.info("uefn plugin process completed");
+      console.info("Use Env In Runtime plugin process completed");
       console.groupEnd();
-      utils.status.show({summary: "The environment variables have been added successfully!"});
+      console.info("The environment variables have been added successfully!");
     }
     catch (error) {
       utils.build.failPlugin("The plugin failed. Please check your configuration. Stack trace:", {error});
