@@ -6,7 +6,7 @@ module.exports = {
 
       // Stop the process if there is no prefix input without breaking the build
       if (!prefix) {
-        return console.warn("No variables defined in the \"prefix\" input. Skip the process.");
+        return console.warn("No \"prefix\" input defined. Skip the process.");
       }
 
       console.info(`Defined prefix: "${prefix}"`);
@@ -14,7 +14,7 @@ module.exports = {
       // Stop the process if there is no def input without breaking the build
       const hasDef = inputs.def || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_DEF;
       if (!hasDef) {
-        return console.warn("No variables defined in the \"def\" input. Skip the process.");
+        return console.warn("No \"def\" input defined. Skip the process.");
       }
 
       // Build definitions

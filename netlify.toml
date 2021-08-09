@@ -24,3 +24,6 @@ REACT_APP_MY_KEY="NEW DEV ENV"
 
 [[plugins]]
 package = "./netlify/plugins/netlify-plugin-uefn"
+     [plugins.inputs]
+        prefix = "REACT_APP"
+#         def = ["TOML_ALL_TEST", "TOML_PROD_TEST", "TOML_BRANCH_TEST"]
