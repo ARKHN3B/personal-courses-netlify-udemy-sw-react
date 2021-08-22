@@ -1,5 +1,5 @@
 module.exports = {
-  onPreBuild: ({inputs, utils}) => {
+  onPreBuild: ({inputs, netlifyConfig}) => {
     console.group("Starting the \"uefn\" plugin process");
     const prefix = inputs.prefix || process.env.NETLIFY_PLUGIN_USE_ENV_IN_RUNTIME_PREFIX;
 
@@ -25,8 +25,7 @@ module.exports = {
     for (const definition of definitions) {
       // Use old concat to provide a support to old Node versions
       const key        = `${prefix}_${definition}`;
-      process.env[key] = process.env[definition];
-      console.info(`- Set ${key} with the following value: "${definition}" in process.env`);
+      netlifyConfig.build.environment[key] = process.env[definition];
     }
     console.groupEnd();
 
