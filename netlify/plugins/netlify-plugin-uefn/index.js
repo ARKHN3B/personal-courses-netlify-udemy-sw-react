@@ -45,6 +45,7 @@ function buildGlobalDefinitions(tomlDef) {
   console.group("Set global definitions (merge UI definitions with TOML definitions if exists)");
   // Get definitions sets in the Netlify UI
   const uiDef         = parseUIDefinitions();
+
   console.info("- Parse TOML definitions if exists");
   const parsedTomlDef = Array.isArray(tomlDef) ? tomlDef : splitDefinitions(tomlDef);
 
