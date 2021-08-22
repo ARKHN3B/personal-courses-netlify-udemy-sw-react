@@ -5,13 +5,14 @@ functions = "functions"
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [build.environment]
 TEST_KEY_FROM_NETLIFY_TOML_ENV = "development"
-BIG_ENV = "HELLO_FROM_PROD"
+BIG_ENV = "HELLO_FROM_PROD_BUILD"
 MY_KEY = "TEEEEEEST OVERRIDE"
 
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [context.production.environment]
 TEST_ENV_ONLY_PROD = "Hello World!"
-BIG_ENV = "HELLO_FROM_PROD"
+BIG_ENV = "HELLO_FROM_PROD_PROD"
+TEST_ENV_OVERRIDE = "OVERRIDE"
 
 # Important! The env vars in this file are only evalued during build time and not during runtime
 [context.branch-deploy.environment]
